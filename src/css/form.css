@@ -1,10 +1,10 @@
-.search-form {
+.form {
   width: 371px;
   display: flex;
-  margin: 32px auto 32px auto;
+  margin: 32px auto;
 }
 
-.iput-field {
+.input-field {
   border: 1px solid #808080;
   border-radius: 4px;
   width: 272px;
@@ -14,15 +14,15 @@
   transition: border-color 500ms ease;
 }
 
-.iput-field:placeholder-shown {
+.input-field:placeholder-shown {
   color: #808080;
 }
 
-.iput-field:hover {
+.input-field:hover {
   border-color: #000000;
 }
 
-.iput-field:focus {
+.input-field:focus {
   border-color: #4e75ff;
   outline: none;
 }
@@ -45,7 +45,7 @@
   background-color: #6c8cff;
 }
 
-.img-list {
+.gallery {
   width: 1128px;
   margin: 0 auto;
   display: flex;
@@ -53,7 +53,7 @@
   gap: 24px;
 }
 
-.img-list-item {
+.gallery-item {
   position: relative;
 
   height: 250px;

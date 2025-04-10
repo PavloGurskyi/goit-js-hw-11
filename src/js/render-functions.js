@@ -11,7 +11,7 @@ function createImageCard(image) {
     downloads,
   } = image;
 
-  return `<li class="img-list-item js-item">
+  return `<li class="gallery-item js-item">
         <a href="${largeImageURL}" class="gallery-link">
           <img class="img" src="${webformatURL}" alt="${tags}" width="360" />
           <div class="info-wrapper">
