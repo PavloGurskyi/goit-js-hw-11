@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -25,10 +29,16 @@ a {
 
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 
 img {
   display: block;
   max-width: 100%;
-  height: auto;
+  height: 100%;
+}
+
+input {
+  color: inherit;
+  font-family: inherit;
 }
