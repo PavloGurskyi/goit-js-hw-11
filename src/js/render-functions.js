@@ -54,3 +54,13 @@ export function renderImageCards(images) {
 export function clearGallery() {
   galleryEl.innerHTML = '';
 }
+
+const loaderEl = document.querySelector('.loader');
+
+export function showLoader() {
+  loaderEl.classList.remove('hidden');
+}
+
+export function hideLoader() {
+  loaderEl.classList.add('hidden');
+}

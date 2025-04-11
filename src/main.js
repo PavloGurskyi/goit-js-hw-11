@@ -1,16 +1,18 @@
 import { searchFormEl, fetchImages } from './js/pixabay-api.js';
-import { galleryEl, renderImageCards } from '/js/render-functions.js';
+import {
+  renderImageCards,
+  clearGallery,
+  showLoader,
+  hideLoader,
+} from './js/render-functions.js';
 import iziToast from 'izitoast';
-import SimpleLightbox from 'simplelightbox';
 import './js/scroll-to-up';
 import errorIcon from './img/error.svg';
-
-const loaderEl = document.querySelector('.js-loader');
 
 const onFormSubmit = event => {
   event.preventDefault();
 
-  galleryEl.innerHTML = '';
+  clearGallery();
 
   const userQuery = searchFormEl.elements.search_request.value.trim();
 
@@ -20,17 +22,17 @@ const onFormSubmit = event => {
       position: 'topRight',
     });
 
-    galleryEl.innerHTML = '';
+    clearGallery();
 
     return;
   }
 
-  loaderEl.classList.remove('hidden');
+  showLoader();
 
   fetchImages(userQuery)
     .then(imagesData => {
       if (imagesData.hits.length === 0) {
-        loaderEl.classList.add('hidden');
+        hideLoader();
 
         iziToast.show({
           iconUrl: errorIcon,
@@ -43,7 +45,7 @@ const onFormSubmit = event => {
           messageColor: '#ffffff',
         });
 
-        galleryEl.innerHTML = '';
+        clearGallery();
 
         searchFormEl.reset();
 
@@ -52,14 +54,9 @@ const onFormSubmit = event => {
 
       renderImageCards(imagesData.hits);
 
-      loaderEl.classList.add('hidden');
+      hideLoader();
 
       searchFormEl.reset();
-
-      new SimpleLightbox('.js-img-list a', {
-        captionsData: 'alt',
-        captionDelay: 200,
-      }).refresh();
     })
     .catch(err =>
       iziToast.error({
