@@ -1,4 +1,12 @@
+import SimpleLightBox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 export const galleryEl = document.querySelector('.js-img-list');
+
+let lightbox = new SimpleLightBox('.js-img-list a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 function createImageCard(image) {
   const {
@@ -39,4 +47,6 @@ function createImageCard(image) {
 export function renderImageCards(images) {
   const galleryTemplate = images.map(image => createImageCard(image)).join('');
   galleryEl.innerHTML = galleryTemplate;
+
+  lightbox.refresh();
 }
