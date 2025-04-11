@@ -50,3 +50,7 @@ export function renderImageCards(images) {
 
   lightbox.refresh();
 }
+
+export function clearGallery() {
+  galleryEl.innerHTML = '';
+}
